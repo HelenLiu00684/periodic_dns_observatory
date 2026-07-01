@@ -1,0 +1,69 @@
+{
+    "address_v4": "102.222.142.2",
+    "address_v6": null,
+    "asn_v4": 37575,
+    "asn_v6": null,
+    "country_code": "CV",
+    "description": "ICANN Cabo Verde",
+    "firmware_version": 5080,
+    "first_connected": 1746608106,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            -23.5505,
+            14.9205
+        ]
+    },
+    "id": 64246,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1782840260,
+    "prefix_v4": "102.222.142.0/23",
+    "prefix_v6": null,
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-06T19:19:22Z"
+    },
+    "status_since": 1780773562,
+    "tags": [
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Doesn't Work",
+            "slug": "system-ipv4-doesnt-work"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: V5",
+            "slug": "system-v5"
+        }
+    ],
+    "total_uptime": 11790427,
+    "type": "Probe"
+}

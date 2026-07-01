@@ -1,0 +1,77 @@
+{
+    "address_v4": "196.50.13.138",
+    "address_v6": "fd86:8163:f262:10:da58:d7ff:fe03:128e",
+    "asn_v4": 37649,
+    "asn_v6": null,
+    "country_code": "SN",
+    "description": "Universit\u00e9 Assane Seck Ziguinchor",
+    "firmware_version": 5080,
+    "first_connected": 1744737427,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            -16.2895,
+            12.5495
+        ]
+    },
+    "id": 65165,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1782840262,
+    "prefix_v4": "196.50.13.0/24",
+    "prefix_v6": null,
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-05T08:49:58Z"
+    },
+    "status_since": 1780649398,
+    "tags": [
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv6 Capable",
+            "slug": "system-ipv6-capable"
+        },
+        {
+            "name": "system: IPv6 ULA",
+            "slug": "system-ipv6-ula"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: V5",
+            "slug": "system-v5"
+        }
+    ],
+    "total_uptime": 37928312,
+    "type": "Probe"
+}

@@ -1,0 +1,89 @@
+{
+    "address_v4": "196.49.32.248",
+    "address_v6": "2001:43f8:bb0::5",
+    "asn_v4": 36940,
+    "asn_v6": 36940,
+    "country_code": "NG",
+    "description": "Internet Exchange Point of Nigeria",
+    "firmware_version": 5090,
+    "first_connected": 1759846898,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            3.5885,
+            6.4485
+        ]
+    },
+    "id": 7623,
+    "is_anchor": true,
+    "is_public": true,
+    "last_connected": 1782840253,
+    "prefix_v4": "196.49.32.0/24",
+    "prefix_v6": "2001:43f8:bb0::/48",
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-05T08:46:15Z"
+    },
+    "status_since": 1780649175,
+    "tags": [
+        {
+            "name": "system: Anchor",
+            "slug": "system-anchor"
+        },
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv6 Works",
+            "slug": "system-ipv6-works"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv6 Capable",
+            "slug": "system-ipv6-capable"
+        },
+        {
+            "name": "system: IPv6 Stable 30d",
+            "slug": "system-ipv6-stable-30d"
+        },
+        {
+            "name": "system: IPv6 Stable 1d",
+            "slug": "system-ipv6-stable-1d"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv6 Stable 90d",
+            "slug": "system-ipv6-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: Virtual",
+            "slug": "system-virtual"
+        }
+    ],
+    "total_uptime": 22916900,
+    "type": "Probe"
+}

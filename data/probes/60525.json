@@ -1,0 +1,69 @@
+{
+    "address_v4": "197.149.151.58",
+    "address_v6": null,
+    "asn_v4": 37468,
+    "asn_v6": null,
+    "country_code": "GH",
+    "description": "DC RACKAFRICA - RIPE PROBE AC GHANA",
+    "firmware_version": 5080,
+    "first_connected": 1701853827,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            -0.2115,
+            5.5695
+        ]
+    },
+    "id": 60525,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1782840256,
+    "prefix_v4": "197.149.148.0/22",
+    "prefix_v6": null,
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-05T08:53:02Z"
+    },
+    "status_since": 1780649582,
+    "tags": [
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: V5",
+            "slug": "system-v5"
+        }
+    ],
+    "total_uptime": 78149972,
+    "type": "Probe"
+}

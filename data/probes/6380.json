@@ -1,0 +1,69 @@
+{
+    "address_v4": "196.49.14.25",
+    "address_v6": null,
+    "asn_v4": 30997,
+    "asn_v6": null,
+    "country_code": "GH",
+    "description": "Ghana Internet Exchange",
+    "firmware_version": 5090,
+    "first_connected": 1532679976,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            -0.1885,
+            5.5975
+        ]
+    },
+    "id": 6380,
+    "is_anchor": true,
+    "is_public": true,
+    "last_connected": 1782840252,
+    "prefix_v4": "196.49.14.0/24",
+    "prefix_v6": null,
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-28T11:54:57Z"
+    },
+    "status_since": 1782647697,
+    "tags": [
+        {
+            "name": "system: Anchor",
+            "slug": "system-anchor"
+        },
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: V3 PC Engines",
+            "slug": "system-v3-pc-engines"
+        }
+    ],
+    "total_uptime": 244712658,
+    "type": "Probe"
+}

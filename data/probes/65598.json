@@ -1,0 +1,73 @@
+{
+    "address_v4": "102.215.52.10",
+    "address_v6": null,
+    "asn_v4": 329082,
+    "asn_v6": null,
+    "country_code": "LR",
+    "description": null,
+    "firmware_version": 5080,
+    "first_connected": 1767183431,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            -9.4985,
+            6.5015
+        ]
+    },
+    "id": 65598,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1782840263,
+    "prefix_v4": "102.215.52.0/24",
+    "prefix_v6": null,
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-05T08:49:41Z"
+    },
+    "status_since": 1780649381,
+    "tags": [
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: Auto GEOIP country",
+            "slug": "system-auto-geoip-country"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: V5",
+            "slug": "system-v5"
+        }
+    ],
+    "total_uptime": 15655179,
+    "type": "Probe"
+}

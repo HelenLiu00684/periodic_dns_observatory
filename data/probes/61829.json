@@ -1,0 +1,69 @@
+{
+    "address_v4": "41.138.97.55",
+    "address_v6": null,
+    "asn_v4": 25543,
+    "asn_v6": null,
+    "country_code": "BF",
+    "description": "Association Burkinab\u00e8 des Domaines Internet (ABDI) - Ouagadougou - Burkina Faso - Acc\u00e8s internet Moov Africa Burkina Faso - FTTH",
+    "firmware_version": 5080,
+    "first_connected": 1675874209,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            -1.5015,
+            12.3715
+        ]
+    },
+    "id": 61829,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1782840258,
+    "prefix_v4": "41.138.97.0/24",
+    "prefix_v6": null,
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-14T08:14:20Z"
+    },
+    "status_since": 1781424860,
+    "tags": [
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: V5",
+            "slug": "system-v5"
+        }
+    ],
+    "total_uptime": 98765614,
+    "type": "Probe"
+}

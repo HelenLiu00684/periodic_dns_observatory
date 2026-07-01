@@ -1,0 +1,89 @@
+{
+    "address_v4": "102.67.110.147",
+    "address_v6": "2c0f:ee00:1008:1700:da58:d7ff:fe03:375",
+    "asn_v4": 37721,
+    "asn_v6": 37721,
+    "country_code": "BF",
+    "description": "VIRTIX OUA2",
+    "firmware_version": 5080,
+    "first_connected": 1674124569,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            -1.4885,
+            12.2895
+        ]
+    },
+    "id": 61695,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1782840258,
+    "prefix_v4": "102.67.110.0/24",
+    "prefix_v6": "2c0f:ee00:1008::/48",
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-06T17:32:35Z"
+    },
+    "status_since": 1780767155,
+    "tags": [
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv6 Works",
+            "slug": "system-ipv6-works"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv6 Capable",
+            "slug": "system-ipv6-capable"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "system: IPv6 Stable 30d",
+            "slug": "system-ipv6-stable-30d"
+        },
+        {
+            "name": "system: IPv6 Stable 1d",
+            "slug": "system-ipv6-stable-1d"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv6 Stable 90d",
+            "slug": "system-ipv6-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: V5",
+            "slug": "system-v5"
+        }
+    ],
+    "total_uptime": 107772179,
+    "type": "Probe"
+}

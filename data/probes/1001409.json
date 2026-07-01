@@ -1,0 +1,57 @@
+{
+    "address_v4": "196.192.16.66",
+    "address_v6": null,
+    "asn_v4": 328228,
+    "asn_v6": null,
+    "country_code": "BJ",
+    "description": "EKALAB #7",
+    "firmware_version": 5020,
+    "first_connected": 1606304104,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            2.3375,
+            6.4215
+        ]
+    },
+    "id": 1001409,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1782840263,
+    "prefix_v4": "196.192.16.0/24",
+    "prefix_v6": null,
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-29T04:54:58Z"
+    },
+    "status_since": 1782708898,
+    "tags": [
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: Software",
+            "slug": "system-software"
+        }
+    ],
+    "total_uptime": 131923792,
+    "type": "Probe"
+}

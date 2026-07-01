@@ -1,0 +1,69 @@
+{
+    "address_v4": "154.113.73.198",
+    "address_v6": null,
+    "asn_v4": 37282,
+    "asn_v6": null,
+    "country_code": "NG",
+    "description": "MainOne Cables Company, Saka PoP",
+    "firmware_version": 5080,
+    "first_connected": 1705585255,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            3.5915,
+            6.4475
+        ]
+    },
+    "id": 61190,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1782840257,
+    "prefix_v4": "154.113.0.0/16",
+    "prefix_v6": null,
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-25T13:56:10Z"
+    },
+    "status_since": 1782395770,
+    "tags": [
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: V5",
+            "slug": "system-v5"
+        }
+    ],
+    "total_uptime": 76180504,
+    "type": "Probe"
+}

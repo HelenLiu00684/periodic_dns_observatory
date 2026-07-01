@@ -1,0 +1,93 @@
+{
+    "address_v4": "102.205.44.5",
+    "address_v6": "2a01:e281:ac01:222::1",
+    "asn_v4": 214354,
+    "asn_v6": 214354,
+    "country_code": "NG",
+    "description": "Lagos, Nigeria \ud83c\uddf3\ud83c\uddec",
+    "firmware_version": 5110,
+    "first_connected": 1759655697,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            3.3915,
+            6.4475
+        ]
+    },
+    "id": 1012981,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1782840264,
+    "prefix_v4": "102.205.44.0/24",
+    "prefix_v6": "2a01:e281:ac01::/48",
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-05T08:51:20Z"
+    },
+    "status_since": 1780649480,
+    "tags": [
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv6 Works",
+            "slug": "system-ipv6-works"
+        },
+        {
+            "name": "system: Auto GEOIP city",
+            "slug": "system-auto-geoip-city"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv6 Capable",
+            "slug": "system-ipv6-capable"
+        },
+        {
+            "name": "system: IPv6 Stable 30d",
+            "slug": "system-ipv6-stable-30d"
+        },
+        {
+            "name": "system: IPv6 Stable 1d",
+            "slug": "system-ipv6-stable-1d"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv6 Stable 90d",
+            "slug": "system-ipv6-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: Software",
+            "slug": "system-software"
+        },
+        {
+            "name": "zgato",
+            "slug": "zgato"
+        }
+    ],
+    "total_uptime": 23036620,
+    "type": "Probe"
+}
