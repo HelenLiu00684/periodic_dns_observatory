@@ -1,6 +1,6 @@
 """
 ============================================================
-Project : West Africa DNS Observatory
+Project : DNS Measurement Platform
 Module  : test_archive_pipeline.py
 
 Description

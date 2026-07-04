@@ -12,7 +12,7 @@ from app.database.sqlite_writer import insert_observation
 
 def test_insert_observation():
 
-    connection = get_connection("test_west_africa_dns.db")
+    connection = get_connection("dns_measurement.db")
 
     create_tables(connection)
 

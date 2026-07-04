@@ -1,6 +1,6 @@
 """
 ============================================================
-Project : West Africa DNS Observatory
+Project : DNS Measurement Platform
 Module  : database.py
 
 Description
@@ -48,7 +48,7 @@ from pathlib import Path
 # Constants
 # ==========================================================
 
-DATABASE_NAME = "west_africa_dns.db"
+DATABASE_NAME = "dns_measurement.db"
 # DATABASE_NAME = "archive.db"
 
 DATABASE_DIRECTORY = Path("data")

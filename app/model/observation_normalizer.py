@@ -1,6 +1,6 @@
 """
 ============================================================
-Project : West Africa DNS Observatory
+Project : DNS Measurement Platform
 Module  : observation_normalizer.py
 
 Description

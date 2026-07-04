@@ -10,7 +10,7 @@ from app.database.sqlite_writer import insert_measurement
 def test_insert_measurement():
 
     # Connect to test database
-    connection = get_connection("test_west_africa_dns.db")
+    connection = get_connection("dns_measurement.db")
 
     # Ensure tables exist
     create_tables(connection)

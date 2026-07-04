@@ -1,6 +1,6 @@
 """
 ============================================================
-Project : West Africa DNS Observatory
+Project : DNS Measurement Platform
 Module  : sqlite_writer.py
 
 Description
@@ -250,19 +250,18 @@ def save_all(
     measurement: dict,
     probe: dict,
     observation: dict,
-) -> None:
+) -> bool:
     """
     Save a complete Observation workflow into SQLite.
 
-    This function coordinates the insertion of:
+    Returns
+    -------
+    True
+        A new Observation was inserted.
 
-        • Measurement
-        • Probe
-        • Observation
-
-    Duplicate Observation records are skipped.
+    False
+        Observation already exists.
     """
-
 
     insert_measurement(
         connection,
@@ -276,19 +275,23 @@ def save_all(
 
     observation_id = observation["identity"]["observation_id"]
 
-    if not observation_exists(
+    if observation_exists(
         connection,
         observation_id,
     ):
 
-        insert_observation(
-            connection,
-            observation,
-        )
+        connection.commit()
+
+        return False
+
+    insert_observation(
+        connection,
+        observation,
+    )
 
     connection.commit()
 
-
+    return True
 # ==========================================================
 # Main
 # ==========================================================

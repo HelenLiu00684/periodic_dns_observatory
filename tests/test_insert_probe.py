@@ -9,7 +9,7 @@ from app.database.sqlite_writer import insert_probe
 
 def test_insert_probe():
 
-    connection = get_connection("test_west_africa_dns.db")
+    connection = get_connection("test_dns_measurement.db")
 
     create_tables(connection)
 

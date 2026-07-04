@@ -1,4 +1,4 @@
-#!/home/qjliu/west_africa_dns_observatory/.venv/bin/python3.12
+#!/home/qjliu/periodic_dns_observatory/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

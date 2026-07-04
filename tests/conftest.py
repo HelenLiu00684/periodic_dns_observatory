@@ -50,7 +50,7 @@ Shared fixtures used by all database tests.
 
 """
 ============================================================
-Project : West Africa DNS Observatory
+Project : DNS Measurement Platform
 Module  : conftest.py
 
 Description
@@ -99,7 +99,7 @@ from app.database.sqlite_schema import (
 )
 
 
-TEST_DATABASE = "test_west_africa_dns.db"
+TEST_DATABASE = "dns_measurement.db"
 
 
 @pytest.fixture
