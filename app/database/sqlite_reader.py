@@ -43,6 +43,8 @@ from sqlite3 import Connection
 from app.database.sqlite_connection import (
     get_connection,
     close_connection,
+    DATABASE_DIRECTORY,
+    DATABASE_NAME,
 )
 
 
@@ -74,7 +76,17 @@ def get_measurement(
     if row is None:
         return None
 
-    return dict(row)
+    measurement = dict(row)
+
+    #
+    # Restore JSON fields
+    #
+    if measurement["raw_json"]:
+        measurement["raw_json"] = json.loads(
+            measurement["raw_json"]
+        )
+
+    return measurement
 
 
 # ==========================================================
@@ -105,7 +117,14 @@ def get_probe(
     if row is None:
         return None
 
-    return dict(row)
+    probe = dict(row)
+
+    if probe["raw_json"]:
+        probe["raw_json"] = json.loads(
+            probe["raw_json"]
+        )
+
+    return probe
 
 
 # ==========================================================
@@ -429,6 +448,53 @@ def get_all_observations(
     )
 
     return cursor.fetchall()
+
+
+def get_statistics(
+    connection: Connection,
+) -> dict:
+    """
+    Return database statistics.
+    """
+
+    cursor = connection.cursor()
+
+    cursor.execute(
+        """
+        SELECT COUNT(*)
+        FROM measurement
+        """
+    )
+    measurement_count = cursor.fetchone()[0]
+
+    cursor.execute(
+        """
+        SELECT COUNT(*)
+        FROM probe
+        """
+    )
+    probe_count = cursor.fetchone()[0]
+
+    cursor.execute(
+        """
+        SELECT COUNT(*)
+        FROM observation
+        """
+    )
+    observation_count = cursor.fetchone()[0]
+
+    database_path = DATABASE_DIRECTORY / DATABASE_NAME
+    database_size = os.path.getsize(database_path)
+
+    database_size = os.path.getsize(database_path)
+
+    return {
+        "measurement_count": measurement_count,
+        "probe_count": probe_count,
+        "observation_count": observation_count,
+        "database_size_bytes": database_size,
+    }
+
 # ==========================================================
 # Main
 # ==========================================================
