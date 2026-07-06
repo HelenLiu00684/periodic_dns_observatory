@@ -1,0 +1,69 @@
+{
+    "address_v4": "45.76.45.71",
+    "address_v6": null,
+    "asn_v4": 20473,
+    "asn_v6": null,
+    "country_code": "FR",
+    "description": null,
+    "firmware_version": 5120,
+    "first_connected": 1775547076,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            2.3875,
+            48.9215
+        ]
+    },
+    "id": 1015218,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1783293893,
+    "prefix_v4": "45.76.44.0/22",
+    "prefix_v6": null,
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-05T08:42:57Z"
+    },
+    "status_since": 1780648977,
+    "tags": [
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: Auto GEOIP city",
+            "slug": "system-auto-geoip-city"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: Software",
+            "slug": "system-software"
+        }
+    ],
+    "total_uptime": 7745995,
+    "type": "Probe"
+}

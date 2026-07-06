@@ -3,14 +3,16 @@ import requests
 from pathlib import Path
 
 
-def save_json(data, filename: Path):
+def save_json(data, filename):
 
     filename.parent.mkdir(parents=True, exist_ok=True)
+
+    print("Saving to:", filename.resolve())
 
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4)
 
-    print(f"[Saved] {filename}")
+    print("Saved:", filename.resolve())
 
 
 def get_json(url):

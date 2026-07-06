@@ -1,0 +1,77 @@
+{
+    "address_v4": "78.80.47.35",
+    "address_v6": "fddd:1332:482::1",
+    "asn_v4": 13036,
+    "asn_v6": null,
+    "country_code": "CZ",
+    "description": null,
+    "firmware_version": 5080,
+    "first_connected": 1639260632,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            16.6795,
+            49.2075
+        ]
+    },
+    "id": 1003350,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1783293879,
+    "prefix_v4": "78.80.0.0/16",
+    "prefix_v6": null,
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-07-05T12:55:56Z"
+    },
+    "status_since": 1783256156,
+    "tags": [
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv6 Capable",
+            "slug": "system-ipv6-capable"
+        },
+        {
+            "name": "system: IPv6 ULA",
+            "slug": "system-ipv6-ula"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: Software",
+            "slug": "system-software"
+        }
+    ],
+    "total_uptime": 53494922,
+    "type": "Probe"
+}

@@ -21,7 +21,6 @@
 # Configuration
 # ==========================================================
 
-COLLECTOR_CMD="python -m app.collector.atlas_live_collector"
 
 PID_FILE="run/collector.pid"
 

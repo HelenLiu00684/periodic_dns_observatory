@@ -62,6 +62,7 @@ fi
 previous_count=$(sqlite3 "$DB" \
 "SELECT COUNT(*) FROM observation;")
 
+
 previous_timestamp=$(sqlite3 "$DB" \
 "SELECT COALESCE(MAX(timestamp),0) FROM observation;")
 
@@ -76,6 +77,7 @@ do
     current_count=$(sqlite3 "$DB" \
     "SELECT COUNT(*) FROM observation;")
 
+    count_delta=$((current_count-previous_count))
     current_timestamp=$(sqlite3 "$DB" \
     "SELECT COALESCE(MAX(timestamp),0) FROM observation;")
 
@@ -101,7 +103,14 @@ do
     echo ""
     echo "Observation Count"
     echo "------------------------------------------------------"
-    echo "$current_count"
+
+    if [ "$count_delta" -gt 0 ]; then
+        echo "${current_count} (+${count_delta})"
+    elif [ "$count_delta" -lt 0 ]; then
+        echo "${current_count} (${count_delta})"
+    else
+        echo "${current_count} (+0)"
+    fi
 
     echo ""
     echo "Latest Timestamp"
@@ -115,13 +124,13 @@ do
 
     echo ""
 
-    if [ "$delta" -gt 0 ]; then
+    if [ "$count_delta" -gt 0 ]; then
 
         echo "Status"
         echo "------------------------------------------------------"
         echo "PASS : Archive is updating normally."
 
-    elif [ "$delta" -eq 0 ]; then
+    elif [ "$count_delta" -eq 0 ]; then
 
         echo "Status"
         echo "------------------------------------------------------"
@@ -131,7 +140,7 @@ do
 
         echo "Status"
         echo "------------------------------------------------------"
-        echo "ERROR : Timestamp moved backwards."
+        echo "ERROR : Observation count decreased."
 
     fi
 

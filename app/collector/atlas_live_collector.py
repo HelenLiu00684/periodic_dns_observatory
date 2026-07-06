@@ -18,10 +18,11 @@ Helen Liu
 """
 
 from __future__ import annotations
-
+from datetime import datetime
 import time
 from dataclasses import dataclass
 from typing import Dict, List, Optional
+from datetime import datetime, timedelta
 
 import requests
 
@@ -40,6 +41,16 @@ from app.database.sqlite_writer import (
 
 from app.model.observation_normalizer import (
     normalize_dns_observation,
+)
+
+from app.collector.config import (
+    RAW_DIR,
+    METADATA_DIR,
+    PROBE_DIR,
+)
+
+from app.collector.utils import (
+    save_json,
 )
 
 
@@ -69,7 +80,7 @@ class CycleStats:
     cycle: int
     total_results: int = 0
     archived: int = 0
-    skipped: int = 0
+    duplicate: int = 0
     failed: int = 0
     elapsed_seconds: float = 0.0
 
@@ -199,6 +210,11 @@ def get_probe_from_cache(
             probe_id,
         )
 
+        save_json(
+            probe,
+            PROBE_DIR / f"{probe_id}.json",
+        )
+
     except requests.RequestException as error:
         print(
             f"[WARN] Failed to fetch probe {probe_id}: {error}"
@@ -291,6 +307,20 @@ def collect_once(
 
         results = fetch_measurement_results(
             measurement["id"],
+)
+
+        timestamp = datetime.now().strftime(
+            "%Y%m%d_%H%M%S"
+        )
+
+        save_json(
+            results,
+            RAW_DIR / "results.json",
+        )
+
+        save_json(
+            results,
+            RAW_DIR / f"results_{timestamp}.json",
         )
 
     except requests.RequestException as error:
@@ -309,10 +339,22 @@ def collect_once(
 
     stats.total_results = len(results)
 
+    latest_timestamp = get_latest_observation_timestamp(
+        connection,
+    )
     for index, result in enumerate(
         results,
         start=1,
     ):
+        result_timestamp = result.get("timestamp")
+
+        if result_timestamp is None:
+            stats.failed += 1
+            continue
+
+        if result_timestamp <= latest_timestamp:
+            # stats.duplicate += 1
+            continue
 
         # --------------------------------------------------
         # Validate Result
@@ -322,7 +364,7 @@ def collect_once(
             result,
         ):
 
-            stats.skipped += 1
+            stats.failed += 1
 
             continue
 
@@ -338,10 +380,10 @@ def collect_once(
         )
 
         if probe is None:
-
             stats.failed += 1
-
             continue
+
+
 
         # --------------------------------------------------
         # Archive
@@ -367,7 +409,7 @@ def collect_once(
 
         elif archive_result is False:
 
-            stats.skipped += 1
+            stats.duplicate += 1
 
         else:
 
@@ -414,7 +456,7 @@ def print_cycle_report(
     )
 
     print(
-        f"Skipped      : {stats.skipped}"
+        f"Duplicate    : {stats.duplicate}"
     )
 
     print(
@@ -450,6 +492,11 @@ def run_once() -> None:
         MEASUREMENT_ID,
     )
 
+    # Save measurement metadata
+    save_json(
+        measurement,
+        METADATA_DIR / "measurement_metadata.json",
+    )
     connection = get_connection()
 
     probe_cache: Dict[int, Dict] = {}
@@ -498,11 +545,23 @@ def run_forever() -> None:
         MEASUREMENT_ID,
     )
 
+    save_json(
+        measurement,
+        METADATA_DIR / "measurement_metadata.json",
+    )
     connection = get_connection()
 
     probe_cache: Dict[int, Dict] = {}
 
     cycle_number = 1
+
+    next_time = datetime.now() + timedelta(
+        seconds=COLLECT_INTERVAL_SECONDS
+    )
+    print(
+    f"[INFO] Next collection: "
+    f"{next_time:%Y-%m-%d %H:%M:%S}"
+)
 
     try:
 
@@ -549,7 +608,31 @@ def run_forever() -> None:
             connection,
         )
 
+def get_latest_observation_timestamp(connection) -> int:
+    """
+    Get latest observation timestamp from SQLite.
+    """
 
+    cursor = connection.cursor()
+
+    cursor.execute(
+        """
+        SELECT MAX(timestamp) AS latest_timestamp
+        FROM observation
+        """
+    )
+
+    row = cursor.fetchone()
+
+    if row is None:
+        return 0
+
+    latest_timestamp = row["latest_timestamp"]
+
+    if latest_timestamp is None:
+        return 0
+
+    return int(latest_timestamp)
 # ==========================================================
 # Main
 # ==========================================================
@@ -562,4 +645,6 @@ if __name__ == "__main__":
 
     # Continuous collection.
     #
+
+
     run_forever()

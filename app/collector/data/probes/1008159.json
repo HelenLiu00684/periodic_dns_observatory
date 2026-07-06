@@ -1,0 +1,89 @@
+{
+    "address_v4": "45.14.106.124",
+    "address_v6": "2400:ddc0:c001::219",
+    "asn_v4": 4785,
+    "asn_v6": 4785,
+    "country_code": "JP",
+    "description": "xtom jp",
+    "firmware_version": 5080,
+    "first_connected": 1715848298,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            135.4995,
+            34.6915
+        ]
+    },
+    "id": 1008159,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1783283479,
+    "prefix_v4": "45.14.106.0/24",
+    "prefix_v6": "2400:ddc0:c000::/36",
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-05T08:54:51Z"
+    },
+    "status_since": 1780649691,
+    "tags": [
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv6 Works",
+            "slug": "system-ipv6-works"
+        },
+        {
+            "name": "system: Auto GEOIP city",
+            "slug": "system-auto-geoip-city"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv6 Capable",
+            "slug": "system-ipv6-capable"
+        },
+        {
+            "name": "system: IPv6 Stable 30d",
+            "slug": "system-ipv6-stable-30d"
+        },
+        {
+            "name": "system: IPv6 Stable 1d",
+            "slug": "system-ipv6-stable-1d"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv6 Stable 90d",
+            "slug": "system-ipv6-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: Software",
+            "slug": "system-software"
+        }
+    ],
+    "total_uptime": 67394786,
+    "type": "Probe"
+}

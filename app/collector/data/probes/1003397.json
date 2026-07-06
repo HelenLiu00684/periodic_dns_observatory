@@ -1,0 +1,129 @@
+{
+    "address_v4": "79.143.250.33",
+    "address_v6": "2001:678:938:300:2873:f7ff:fec5:f154",
+    "asn_v4": 29608,
+    "asn_v6": 29608,
+    "country_code": "FR",
+    "description": "atlas.fcn.neel.ch",
+    "firmware_version": 5080,
+    "first_connected": 1639744401,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            1.6915,
+            48.6005
+        ]
+    },
+    "id": 1003397,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1783283475,
+    "prefix_v4": "79.143.240.0/20",
+    "prefix_v6": "2001:678:938::/48",
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-23T06:54:44Z"
+    },
+    "status_since": 1782197684,
+    "tags": [
+        {
+            "name": "Fibre",
+            "slug": "fibre"
+        },
+        {
+            "name": "Home",
+            "slug": "home"
+        },
+        {
+            "name": "NAT",
+            "slug": "nat"
+        },
+        {
+            "name": "Native IPv6",
+            "slug": "native-ipv6"
+        },
+        {
+            "name": "dual-stack",
+            "slug": "dual-stack"
+        },
+        {
+            "name": "IPv4",
+            "slug": "ipv4"
+        },
+        {
+            "name": "IPv6",
+            "slug": "ipv6"
+        },
+        {
+            "name": "VPN",
+            "slug": "vpn"
+        },
+        {
+            "name": "FTTH",
+            "slug": "ftth"
+        },
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv6 Works",
+            "slug": "system-ipv6-works"
+        },
+        {
+            "name": "Native IPv4",
+            "slug": "native-ipv4"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv6 Capable",
+            "slug": "system-ipv6-capable"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "system: IPv6 Stable 30d",
+            "slug": "system-ipv6-stable-30d"
+        },
+        {
+            "name": "system: IPv6 Stable 1d",
+            "slug": "system-ipv6-stable-1d"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv6 Stable 90d",
+            "slug": "system-ipv6-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: Software",
+            "slug": "system-software"
+        }
+    ],
+    "total_uptime": 141470482,
+    "type": "Probe"
+}

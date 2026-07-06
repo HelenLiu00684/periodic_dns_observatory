@@ -155,22 +155,9 @@ def get_observation(
     if row is None:
         return None
 
-    observation = dict(row)
-
-    #
-    # Restore JSON fields
-    #
-    observation["identity"] = json.loads(observation["identity"])
-    observation["metadata"] = json.loads(observation["metadata"])
-    observation["network"] = json.loads(observation["network"])
-    observation["address_family"] = json.loads(observation["address_family"])
-    observation["location"] = json.loads(observation["location"])
-    observation["protocol"] = json.loads(observation["protocol"])
-    observation["routing"] = json.loads(observation["routing"])
-    observation["path"] = json.loads(observation["path"])
-    observation["telemetry"] = json.loads(observation["telemetry"])
-
-    return observation
+    return _restore_observation(
+        row,
+    )
 
 import os
 
@@ -254,21 +241,13 @@ def list_observations(
 
     for row in rows:
 
-        observation = dict(row)
+        observations.append(
+            _restore_observation(
+                row,
+            )
+        )
 
-        observation["identity"] = json.loads(observation["identity"])
-        observation["metadata"] = json.loads(observation["metadata"])
-        observation["network"] = json.loads(observation["network"])
-        observation["address_family"] = json.loads(observation["address_family"])
-        observation["location"] = json.loads(observation["location"])
-        observation["protocol"] = json.loads(observation["protocol"])
-        observation["routing"] = json.loads(observation["routing"])
-        observation["path"] = json.loads(observation["path"])
-        observation["telemetry"] = json.loads(observation["telemetry"])
-
-        observations.append(observation)
-
-    return observations
+        return observations
 
 def get_latest_measurement_id(connection: Connection):
 
@@ -494,6 +473,89 @@ def get_statistics(
         "observation_count": observation_count,
         "database_size_bytes": database_size,
     }
+# ==========================================================
+# Observation Helpers
+# ==========================================================
+def _restore_observation(
+    row,
+) -> dict:
+    """
+    Restore one Observation from a SQLite row.
+    """
+
+    observation = dict(row)
+
+    observation["identity"] = json.loads(observation["identity"])
+    observation["metadata"] = json.loads(observation["metadata"])
+    observation["network"] = json.loads(observation["network"])
+    observation["address_family"] = json.loads(
+        observation["address_family"]
+    )
+    observation["location"] = json.loads(observation["location"])
+    observation["protocol"] = json.loads(observation["protocol"])
+    observation["routing"] = json.loads(observation["routing"])
+    observation["path"] = json.loads(observation["path"])
+    observation["telemetry"] = json.loads(
+        observation["telemetry"]
+    )
+
+    return observation
+
+
+def get_observations_after(
+    connection: Connection,
+    last_timestamp: int,
+    limit: int = 1000,
+) -> list[dict]:
+    """
+    Return observations newer than the specified timestamp.
+
+    Parameters
+    ----------
+    connection : Connection
+        SQLite connection.
+
+    last_timestamp : int
+        Return observations with timestamp greater than this value.
+
+    limit : int
+        Maximum number of observations.
+
+    Returns
+    -------
+    list[dict]
+        Canonical Observation objects.
+    """
+
+    cursor = connection.cursor()
+
+    cursor.execute(
+        """
+        SELECT *
+        FROM observation
+        WHERE timestamp > ?
+        ORDER BY timestamp
+        LIMIT ?
+        """,
+        (
+            last_timestamp,
+            limit,
+        ),
+    )
+
+    rows = cursor.fetchall()
+
+    observations = []
+
+    for row in rows:
+
+        observations.append(
+            _restore_observation(
+                row,
+            )
+        )
+
+    return observations
 
 # ==========================================================
 # Main

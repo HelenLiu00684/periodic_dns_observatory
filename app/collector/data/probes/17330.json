@@ -1,0 +1,121 @@
+{
+    "address_v4": null,
+    "address_v6": null,
+    "asn_v4": 15557,
+    "asn_v6": 15557,
+    "country_code": "FR",
+    "description": "Numericable",
+    "firmware_version": 5080,
+    "first_connected": 1400999714,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            2.3185,
+            48.8375
+        ]
+    },
+    "id": 17330,
+    "is_anchor": false,
+    "is_public": false,
+    "last_connected": 1783283466,
+    "prefix_v4": "37.64.0.0/13",
+    "prefix_v6": "2a02:8400::/25",
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-28T10:03:21Z"
+    },
+    "status_since": 1782641001,
+    "tags": [
+        {
+            "name": "Fibre",
+            "slug": "fibre"
+        },
+        {
+            "name": "Home",
+            "slug": "home"
+        },
+        {
+            "name": "NAT",
+            "slug": "nat"
+        },
+        {
+            "name": "IPv4",
+            "slug": "ipv4"
+        },
+        {
+            "name": "IPv6",
+            "slug": "ipv6"
+        },
+        {
+            "name": "FTTH",
+            "slug": "ftth"
+        },
+        {
+            "name": "SFR",
+            "slug": "sfr"
+        },
+        {
+            "name": "system: V3",
+            "slug": "system-v3"
+        },
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv6 Works",
+            "slug": "system-ipv6-works"
+        },
+        {
+            "name": "GPON",
+            "slug": "gpon"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv6 Capable",
+            "slug": "system-ipv6-capable"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "system: IPv6 Stable 30d",
+            "slug": "system-ipv6-stable-30d"
+        },
+        {
+            "name": "system: IPv6 Stable 1d",
+            "slug": "system-ipv6-stable-1d"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv6 Stable 90d",
+            "slug": "system-ipv6-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        }
+    ],
+    "total_uptime": 352324535,
+    "type": "Probe"
+}

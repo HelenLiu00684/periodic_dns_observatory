@@ -1,0 +1,105 @@
+{
+    "address_v4": "134.147.10.42",
+    "address_v6": "2a05:3e00:c:8:ea94:f6ff:fe48:beb4",
+    "asn_v4": 29484,
+    "asn_v6": 29484,
+    "country_code": "DE",
+    "description": "RUB Probe IB",
+    "firmware_version": 5080,
+    "first_connected": 1427981940,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            7.2575,
+            51.4405
+        ]
+    },
+    "id": 21306,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1783283466,
+    "prefix_v4": "134.147.0.0/16",
+    "prefix_v6": "2a05:3e00::/30",
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-05T08:49:33Z"
+    },
+    "status_since": 1780649373,
+    "tags": [
+        {
+            "name": "Fibre",
+            "slug": "fibre"
+        },
+        {
+            "name": "Academic",
+            "slug": "academic"
+        },
+        {
+            "name": "No NAT",
+            "slug": "no-nat"
+        },
+        {
+            "name": "IPv4",
+            "slug": "ipv4"
+        },
+        {
+            "name": "IPv6",
+            "slug": "ipv6"
+        },
+        {
+            "name": "system: V3",
+            "slug": "system-v3"
+        },
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv6 Works",
+            "slug": "system-ipv6-works"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv6 Capable",
+            "slug": "system-ipv6-capable"
+        },
+        {
+            "name": "system: IPv6 Stable 30d",
+            "slug": "system-ipv6-stable-30d"
+        },
+        {
+            "name": "system: IPv6 Stable 1d",
+            "slug": "system-ipv6-stable-1d"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv6 Stable 90d",
+            "slug": "system-ipv6-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        }
+    ],
+    "total_uptime": 321326520,
+    "type": "Probe"
+}

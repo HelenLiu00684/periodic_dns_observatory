@@ -1,0 +1,93 @@
+{
+    "address_v4": "95.164.126.17",
+    "address_v6": null,
+    "asn_v4": 200736,
+    "asn_v6": null,
+    "country_code": "GR",
+    "description": "Inalan Athens",
+    "firmware_version": 5100,
+    "first_connected": 1579543345,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            23.7815,
+            37.9685
+        ]
+    },
+    "id": 1000082,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1783283474,
+    "prefix_v4": "95.164.126.0/24",
+    "prefix_v6": null,
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-05T08:49:04Z"
+    },
+    "status_since": 1780649344,
+    "tags": [
+        {
+            "name": "Fibre",
+            "slug": "fibre"
+        },
+        {
+            "name": "NAT",
+            "slug": "nat"
+        },
+        {
+            "name": "IPv4",
+            "slug": "ipv4"
+        },
+        {
+            "name": "FTTH",
+            "slug": "ftth"
+        },
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "GPON",
+            "slug": "gpon"
+        },
+        {
+            "name": "Native IPv4",
+            "slug": "native-ipv4"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: Software",
+            "slug": "system-software"
+        }
+    ],
+    "total_uptime": 200836998,
+    "type": "Probe"
+}

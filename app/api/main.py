@@ -37,15 +37,13 @@ app = FastAPI(
 app.include_router(health_router)
 
 app.include_router(statistics_router)
-
-app.include_router(measurement_router)
 app.include_router(measurements_router)
-
-app.include_router(probe_router)
+app.include_router(measurement_router)
 app.include_router(probes_router)
-
-app.include_router(observation_router)
+app.include_router(probe_router)
 app.include_router(observations_router)
+app.include_router(observation_router)
+
 @app.get("/", tags=["System"])
 def root():
     """

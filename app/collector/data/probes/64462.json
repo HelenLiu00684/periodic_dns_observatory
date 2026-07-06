@@ -1,0 +1,85 @@
+{
+    "address_v4": "102.33.165.2",
+    "address_v6": "2c0f:f528:1:7:da58:d7ff:fe03:1220",
+    "asn_v4": 327782,
+    "asn_v6": 327782,
+    "country_code": "ZA",
+    "description": "Metrofibre-ZA-WC-Teraco-Brackenfell",
+    "firmware_version": 5080,
+    "first_connected": 1737100221,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            18.6805,
+            -33.9115
+        ]
+    },
+    "id": 64462,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1783283474,
+    "prefix_v4": "102.33.160.0/21",
+    "prefix_v6": "2c0f:f528:1::/48",
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-05T08:51:02Z"
+    },
+    "status_since": 1780649462,
+    "tags": [
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv6 Works",
+            "slug": "system-ipv6-works"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv6 Capable",
+            "slug": "system-ipv6-capable"
+        },
+        {
+            "name": "system: IPv6 Stable 30d",
+            "slug": "system-ipv6-stable-30d"
+        },
+        {
+            "name": "system: IPv6 Stable 1d",
+            "slug": "system-ipv6-stable-1d"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv6 Stable 90d",
+            "slug": "system-ipv6-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: V5",
+            "slug": "system-v5"
+        }
+    ],
+    "total_uptime": 45498343,
+    "type": "Probe"
+}

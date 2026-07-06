@@ -1,0 +1,85 @@
+{
+    "address_v4": "82.214.97.245",
+    "address_v6": "2a02:2230:2201:100:ee08:6bff:fe73:3dba",
+    "asn_v4": 25467,
+    "asn_v6": 25467,
+    "country_code": "HR",
+    "description": "Akton DC",
+    "firmware_version": 5080,
+    "first_connected": 1725954596,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            15.9985,
+            45.7505
+        ]
+    },
+    "id": 29936,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1783293886,
+    "prefix_v4": "82.214.97.0/24",
+    "prefix_v6": "2a02:2230:2200::/40",
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-20T20:37:13Z"
+    },
+    "status_since": 1781987833,
+    "tags": [
+        {
+            "name": "system: V3",
+            "slug": "system-v3"
+        },
+        {
+            "name": "system: Resolver Mangles Case",
+            "slug": "system-resolver-mangles-case"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv6 Doesn't Work",
+            "slug": "system-ipv6-doesnt-work"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv6 Capable",
+            "slug": "system-ipv6-capable"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "system: IPv6 Stable 30d",
+            "slug": "system-ipv6-stable-30d"
+        },
+        {
+            "name": "system: IPv6 Stable 1d",
+            "slug": "system-ipv6-stable-1d"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv6 Stable 90d",
+            "slug": "system-ipv6-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        }
+    ],
+    "total_uptime": 57134077,
+    "type": "Probe"
+}

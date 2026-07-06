@@ -317,85 +317,8 @@ OBSERVATION_FRAMEWORK = {
 # structure whenever possible.
 # ======================================================
     # ======================================================
+    "protocol": {},
 
-"protocol": {
-
-    "DNS": [
-
-        # ----------------------------
-        # DNS Header
-        # ----------------------------
-        "transaction_id",
-        "flags",
-        "opcode",
-        "rcode",
-
-        # ----------------------------
-        # DNS Question
-        # ----------------------------
-        "query_name",
-        "query_type",
-        "query_class",
-
-        # ----------------------------
-        # DNS Answer
-        # ----------------------------
-        "answer_count",
-        "answers",
-        "ttl",
-
-        # ----------------------------
-        # DNS Authority
-        # ----------------------------
-        "authority_count",
-        "authority",
-
-        # ----------------------------
-        # DNS Additional
-        # ----------------------------
-        "additional_count",
-        "additional",
-
-        # ----------------------------
-        # Raw DNS Packet
-        # ----------------------------
-        "packet_size",
-        "raw_abuf",
-    ],
-
-    "PING": [
-        "packet_size",
-        "packet_loss",
-        "rtt",
-    ],
-
-    "TRACEROUTE": [
-        "hop_count",
-        "hop_list",
-        "latency_per_hop",
-    ],
-
-    "BGP": [
-        "prefix",
-        "origin_as",
-        "next_hop",
-        "as_path",
-        "communities",
-    ],
-
-    "STREAMING": [
-        "interface",
-        "cpu",
-        "memory",
-        "if_in_octets",
-        "if_out_octets",
-    ],
-
-    "SNMP": [
-        "oid",
-        "value",
-    ],
-},
     # ======================================================
     # Routing
     #
@@ -539,23 +462,7 @@ def get_capability_sections():
     ]
 
 
-def get_protocol_fields(observation_type):
-    """
-    Return protocol-specific fields for the given observation type.
 
-    Parameters
-    ----------
-    observation_type : str
-        Observation type such as DNS, PING, TRACEROUTE, BGP,
-        STREAMING or SNMP.
-    """
-
-    observation_type = observation_type.upper()
-
-    if observation_type not in SUPPORTED_OBSERVATION_TYPES:
-        raise ValueError(f"Unsupported observation type: {observation_type}")
-
-    return OBSERVATION_FRAMEWORK["protocol"].get(observation_type, []).copy()
 
 
 # ==========================================================
