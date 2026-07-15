@@ -1,0 +1,69 @@
+{
+    "address_v4": "190.122.166.242",
+    "address_v6": null,
+    "asn_v4": 18809,
+    "asn_v6": null,
+    "country_code": "PA",
+    "description": "ISOCPA Probe 1 IPL Las Tablas, Los Santos",
+    "firmware_version": 5060,
+    "first_connected": 1646538098,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            -80.2785,
+            7.7575
+        ]
+    },
+    "id": 1003790,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1783992742,
+    "prefix_v4": "190.122.166.0/24",
+    "prefix_v6": null,
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-07-12T06:23:00Z"
+    },
+    "status_since": 1783837380,
+    "tags": [
+        {
+            "name": "system: Resolver Mangles Case",
+            "slug": "system-resolver-mangles-case"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: Software",
+            "slug": "system-software"
+        },
+        {
+            "name": "INTERIOR",
+            "slug": "interior"
+        }
+    ],
+    "total_uptime": 134741981,
+    "type": "Probe"
+}

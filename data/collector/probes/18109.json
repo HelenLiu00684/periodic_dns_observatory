@@ -1,0 +1,109 @@
+{
+    "address_v4": "85.91.1.165",
+    "address_v6": "2a01:148:1:205:ea94:f6ff:fe48:7bba",
+    "asn_v4": 34245,
+    "asn_v6": 34245,
+    "country_code": "IE",
+    "description": "Magnet Networks",
+    "firmware_version": 5080,
+    "first_connected": 1440084366,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            -6.2225,
+            53.3115
+        ]
+    },
+    "id": 18109,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1783992731,
+    "prefix_v4": "85.91.0.0/19",
+    "prefix_v6": "2a01:148::/32",
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-05T08:48:08Z"
+    },
+    "status_since": 1780649288,
+    "tags": [
+        {
+            "name": "Fibre",
+            "slug": "fibre"
+        },
+        {
+            "name": "Datacentre",
+            "slug": "datacentre"
+        },
+        {
+            "name": "Core",
+            "slug": "core"
+        },
+        {
+            "name": "No NAT",
+            "slug": "no-nat"
+        },
+        {
+            "name": "Native IPv6",
+            "slug": "native-ipv6"
+        },
+        {
+            "name": "IPv4",
+            "slug": "ipv4"
+        },
+        {
+            "name": "system: V3",
+            "slug": "system-v3"
+        },
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv6 Works",
+            "slug": "system-ipv6-works"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv6 Capable",
+            "slug": "system-ipv6-capable"
+        },
+        {
+            "name": "system: IPv6 Stable 30d",
+            "slug": "system-ipv6-stable-30d"
+        },
+        {
+            "name": "system: IPv6 Stable 1d",
+            "slug": "system-ipv6-stable-1d"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv6 Stable 90d",
+            "slug": "system-ipv6-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        }
+    ],
+    "total_uptime": 320177045,
+    "type": "Probe"
+}

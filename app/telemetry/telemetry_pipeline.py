@@ -30,7 +30,7 @@ Helen Liu
 """
 
 from sqlite3 import Connection
-from typing import Dict, List
+from typing import Dict, Any
 
 from app.database.sqlite_reader import (
     get_observations_after,
@@ -40,21 +40,52 @@ from app.telemetry.telemetry_builder import (
     build_metrics,
 )
 
-# from app.telemetry.influx_writer import (
-#     write_metrics,
-# )
+from app.telemetry.influxdb.influx_writer import (
+    write_metrics,
+)
 # ==========================================================
 # Telemetry Pipeline
+# ==========================================================
+# Telemetry Processing Pipeline
+#
+# SQLite Observation
+#          │
+#          ▼
+# SQLite Reader
+#          │
+#          ▼
+# Canonical Observation
+#          │
+#          ▼
+# Telemetry Builder
+#          │
+#          ▼
+# Canonical Metrics
+#          │
+#          ▼
+# Influx Writer
+#          │
+#          ▼
+# InfluxDB Bucket
+#
 # ==========================================================
 
 def process_batch(
     connection: Connection,
     last_timestamp: int,
     batch_size: int = 1000,
-) -> List[Dict]:
+) -> Dict[str, Any]:
     """
     Process a batch of new Observations.
+    Workflow
 
+        SQLite
+            ↓
+        Observation
+            ↓
+        Canonical Metrics
+            ↓
+        InfluxDB
     Parameters
     ----------
     connection : Connection
@@ -68,16 +99,23 @@ def process_batch(
 
     Returns
     -------
-    List[Dict]
-        Generated Telemetry Metrics.
+        Number of telemetry metrics
+        successfully written into InfluxDB.
     """
-
+    #
+    # Step 1
+    # Read new Observations from SQLite.
+    #
     observations = get_observations_after(
         connection=connection,
         last_timestamp=last_timestamp,
         limit=batch_size,
     )
-
+    #
+    # Step 2
+    # Convert every Observation into
+    # Canonical Telemetry Metrics.
+    #
     metrics = []
 
     for observation in observations:
@@ -90,9 +128,51 @@ def process_batch(
 
         )
 
-    return metrics
-    # written = write_metrics(
-    #     metrics,
-    # )
+    # return metrics
+    # #
+    # Step 3
+    # Write all generated Metrics
+    # into InfluxDB.
+    #
 
-    # return written
+    written_count = write_metrics(
+        metrics,
+    )
+    #
+    # Step 4
+    # Determine the checkpoint timestamp.
+    #
+    if observations:
+
+        next_timestamp = observations[-1]["metadata"]["timestamp"]
+
+    else:
+
+        next_timestamp = last_timestamp
+
+
+    #
+    # Step 5
+    # Return batch processing result.
+    #
+
+    return {
+
+        "observation_count": len(observations),
+
+        "metric_count": len(metrics),
+
+        "written_count": written_count,
+
+        "last_timestamp": next_timestamp,
+
+    }
+
+
+# ==========================================================
+# Main
+# ==========================================================
+
+if __name__ == "__main__":
+
+    print("Telemetry Pipeline Module")        

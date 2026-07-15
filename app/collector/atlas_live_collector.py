@@ -49,7 +49,7 @@ from app.collector.config import (
     PROBE_DIR,
 )
 
-from app.collector.utils import (
+from periodic_dns_observatory.app.common.json_utils import (
     save_json,
 )
 

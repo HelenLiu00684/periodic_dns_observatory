@@ -1,0 +1,57 @@
+{
+    "address_v4": "185.32.187.165",
+    "address_v6": "2a02:6bf:7000:c::2",
+    "asn_v4": 208398,
+    "asn_v6": 208398,
+    "country_code": "FI",
+    "description": "Global DC Oy",
+    "firmware_version": 5090,
+    "first_connected": 1678465546,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            24.9415,
+            60.1695
+        ]
+    },
+    "id": 7185,
+    "is_anchor": true,
+    "is_public": true,
+    "last_connected": 1783593330,
+    "prefix_v4": "185.32.187.0/24",
+    "prefix_v6": "2a02:6b8::/29",
+    "status": {
+        "id": 2,
+        "name": "Disconnected",
+        "since": "2026-07-09T10:35:30Z"
+    },
+    "status_since": 1783593330,
+    "tags": [
+        {
+            "name": "system: Anchor",
+            "slug": "system-anchor"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv6 Capable",
+            "slug": "system-ipv6-capable"
+        },
+        {
+            "name": "system: Virtual",
+            "slug": "system-virtual"
+        },
+        {
+            "name": "system: Geoloc Disputed",
+            "slug": "system-geoloc-disputed"
+        },
+        {
+            "name": "teletech",
+            "slug": "teletech"
+        }
+    ],
+    "total_uptime": 103480664,
+    "type": "Probe"
+}

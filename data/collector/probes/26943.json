@@ -1,0 +1,85 @@
+{
+    "address_v4": "212.68.249.69",
+    "address_v6": "2a02:2788:294:5:c66e:1fff:fe5b:cc62",
+    "asn_v4": 12392,
+    "asn_v6": 12392,
+    "country_code": "BE",
+    "description": "Joel @ Lobbes",
+    "firmware_version": 5080,
+    "first_connected": 1456503114,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            4.2695,
+            50.3485
+        ]
+    },
+    "id": 26943,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1783992733,
+    "prefix_v4": "212.68.240.0/20",
+    "prefix_v6": "2a02:2788:200::/40",
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-07-12T01:17:51Z"
+    },
+    "status_since": 1783819071,
+    "tags": [
+        {
+            "name": "Cable",
+            "slug": "cable"
+        },
+        {
+            "name": "Home",
+            "slug": "home"
+        },
+        {
+            "name": "system: V3",
+            "slug": "system-v3"
+        },
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv6 Works",
+            "slug": "system-ipv6-works"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv6 Capable",
+            "slug": "system-ipv6-capable"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "system: IPv6 Stable 1d",
+            "slug": "system-ipv6-stable-1d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "DOCSIS 3.1",
+            "slug": "docsis-31"
+        }
+    ],
+    "total_uptime": 299789034,
+    "type": "Probe"
+}

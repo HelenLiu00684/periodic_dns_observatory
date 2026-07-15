@@ -1,0 +1,81 @@
+{
+    "address_v4": "136.49.59.12",
+    "address_v6": "2605:a601:81b3:4f08:1:b4ff:fedd:5250",
+    "asn_v4": 16591,
+    "asn_v6": 16591,
+    "country_code": "US",
+    "description": "Google Fiber Austin, TX (HE.net)",
+    "firmware_version": 5080,
+    "first_connected": 1591389772,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            -97.6725,
+            30.2975
+        ]
+    },
+    "id": 54410,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1783992738,
+    "prefix_v4": "136.49.48.0/20",
+    "prefix_v6": "2605:a600::/31",
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-07-12T21:01:11Z"
+    },
+    "status_since": 1783890071,
+    "tags": [
+        {
+            "name": "Fibre",
+            "slug": "fibre"
+        },
+        {
+            "name": "Home",
+            "slug": "home"
+        },
+        {
+            "name": "NAT",
+            "slug": "nat"
+        },
+        {
+            "name": "IPv4",
+            "slug": "ipv4"
+        },
+        {
+            "name": "IPv6",
+            "slug": "ipv6"
+        },
+        {
+            "name": "Multihomed",
+            "slug": "multihomed"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv6 Capable",
+            "slug": "system-ipv6-capable"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "Homelab",
+            "slug": "homelab"
+        },
+        {
+            "name": "system: Firewall problem suspected",
+            "slug": "system-firewall-problem-suspected"
+        },
+        {
+            "name": "system: V4",
+            "slug": "system-v4"
+        }
+    ],
+    "total_uptime": 177559957,
+    "type": "Probe"
+}

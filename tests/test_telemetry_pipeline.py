@@ -28,22 +28,55 @@ from app.telemetry.telemetry_pipeline import (
 )
 
 
-def test_process_batch():
+def test_process_batch(db_connection):
 
-    connection = get_connection()
 
-    metrics = process_batch(
-        connection=connection,
+    result = process_batch(
+        connection=db_connection,
         last_timestamp=0,
         batch_size=10,
     )
 
-    assert metrics is not None
+    #
+    # Verify batch result.
+    #
 
-    assert isinstance(metrics, list)
+    assert result is not None
 
-    assert len(metrics) > 0
+    assert isinstance(result, dict)
 
-    assert len(metrics) % 4 == 0
+    #
+    # Verify batch statistics.
+    #
 
-    connection.close()
+    assert result["observation_count"] > 0
+
+    assert result["metric_count"] > 0
+
+    assert result["written_count"] > 0
+
+    #
+    # Every Observation generates four metrics.
+    #
+
+    assert (
+        result["metric_count"]
+        == result["observation_count"] * 4
+    )
+
+    #
+    # All generated metrics should be written.
+    #
+
+    assert (
+        result["written_count"]
+        == result["metric_count"]
+    )
+
+    #
+    # Verify checkpoint.
+    #
+
+    assert result["last_timestamp"] > 0
+
+  

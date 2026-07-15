@@ -1,0 +1,105 @@
+{
+    "address_v4": "90.116.179.220",
+    "address_v6": "2a01:cb1d:2e8:c500:a62b:b0ff:fee0:13c8",
+    "asn_v4": 3215,
+    "asn_v6": 3215,
+    "country_code": "FR",
+    "description": "RIPE-Atlas-Probe-29788",
+    "firmware_version": 5080,
+    "first_connected": 1475002794,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            7.1315,
+            43.5815
+        ]
+    },
+    "id": 29788,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1783992734,
+    "prefix_v4": "90.116.0.0/16",
+    "prefix_v6": "2a01:cb1c::/30",
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-05T08:48:52Z"
+    },
+    "status_since": 1780649332,
+    "tags": [
+        {
+            "name": "Home",
+            "slug": "home"
+        },
+        {
+            "name": "IPv4",
+            "slug": "ipv4"
+        },
+        {
+            "name": "IPv6",
+            "slug": "ipv6"
+        },
+        {
+            "name": "ADSL",
+            "slug": "adsl"
+        },
+        {
+            "name": "system: V3",
+            "slug": "system-v3"
+        },
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv6 Works",
+            "slug": "system-ipv6-works"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv6 Capable",
+            "slug": "system-ipv6-capable"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "system: IPv6 Stable 30d",
+            "slug": "system-ipv6-stable-30d"
+        },
+        {
+            "name": "system: IPv6 Stable 1d",
+            "slug": "system-ipv6-stable-1d"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv6 Stable 90d",
+            "slug": "system-ipv6-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        }
+    ],
+    "total_uptime": 261968829,
+    "type": "Probe"
+}

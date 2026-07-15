@@ -1,314 +1,384 @@
+"""
+============================================================
+Project : DNS Measurement Platform
+Module  : packet_parser.py
 
-# ==========================================================
-# RIPE Atlas stores DNS packets as Base64 strings.
-#
-# Decode the Base64 string back into the original
-# binary DNS packet.
+Description
+-----------
+Parses a RIPE Atlas Base64-encoded DNS response packet into
+a structured DNS Packet Model.
 
-# =============================================================================
-# DNS Packet Example (RIPE Atlas)
-#
-# Original Base64 Packet (abuf)
-#
-# ciKBgAABAAEAAAABB3lvdXR1YmUDY29tAAABAAHADAABAAEAAADLAASs2RCOAAApEAAAAAAAAAA=
-#
-# After Base64 Decoding
-#
-# 72 22 81 80 00 01 00 01 00 00 00 01
-# 07 79 6f 75 74 75 62 65
-# 03 63 6f 6d
-# 00
-# 00 01
-# 00 01
-# c0 0c
-# 00 01
-# 00 01
-# 00 00 00 cb
-# 00 04
-# ac d9 10 8e
-# 00 00
-# 29
-# 10 00
-# 00 00
-# 00 00
-# 00 00
-#
-#
-# =============================================================================
-# Packet Mapping
-# =============================================================================
-#
-# Raw Bytes                 DNS Field                  Meaning
-# -----------------------------------------------------------------------------
-#
-# 72 22                     Transaction ID             29218
-#
-#                                                    Unique identifier assigned
-#                                                    by the client.
-#                                                    The DNS response must
-#                                                    contain the same ID.
-#
-# -----------------------------------------------------------------------------
-#
-# 81 80                     Flags                      QR RD RA
-#
-#                                                    QR = Query Response
-#                                                         This packet is a DNS
-#                                                         response.
-#
-#                                                    RD = Recursion Desired
-#                                                         Client requests the
-#                                                         resolver to perform
-#                                                         recursive lookup.
-#
-#                                                    RA = Recursion Available
-#                                                         Resolver supports
-#                                                         recursive DNS service.
-#
-# -----------------------------------------------------------------------------
-#
-# 00 01                     Question Count            1
-#
-#                                                    One DNS question exists.
-#
-# -----------------------------------------------------------------------------
-#
-# 00 01                     Answer Count              1
-#
-#                                                    One answer record returned.
-#
-# -----------------------------------------------------------------------------
-#
-# 00 00                     Authority Count           0
-#
-#                                                    No authority records.
-#
-# -----------------------------------------------------------------------------
-#
-# 00 01                     Additional Count          1
-#
-#                                                    One EDNS OPT record.
-#
-# -----------------------------------------------------------------------------
-#
-# 07                         Label Length             7
-#
-#                                                    Next label contains
-#                                                    7 characters.
-#
-# -----------------------------------------------------------------------------
-#
-# 79 6f 75 74 75 62 65      Domain Label              "youtube"
-#
-# -----------------------------------------------------------------------------
-#
-# 03                         Label Length             3
-#
-#                                                    Next label contains
-#                                                    3 characters.
-#
-# -----------------------------------------------------------------------------
-#
-# 63 6f 6d                  Domain Label              "com"
-#
-# -----------------------------------------------------------------------------
-#
-# 00                         End of Name
-#
-#                                                    End of domain name.
-#
-# -----------------------------------------------------------------------------
-#
-# 00 01                     QTYPE                     A
-#
-#                                                    IPv4 Address Record.
-#
-# -----------------------------------------------------------------------------
-#
-# 00 01                     QCLASS                    IN
-#
-#                                                    Internet Class.
-#
-# -----------------------------------------------------------------------------
-#
-# c0 0c                     Name Pointer
-#
-#                                                    DNS Name Compression.
-#
-#                                                    Pointer to the domain
-#                                                    name "youtube.com"
-#                                                    stored in the Question
-#                                                    section.
-#
-# -----------------------------------------------------------------------------
-#
-# 00 01                     TYPE                      A
-#
-#                                                    IPv4 Address Record.
-#
-# -----------------------------------------------------------------------------
-#
-# 00 01                     CLASS                     IN
-#
-#                                                    Internet Class.
-#
-# -----------------------------------------------------------------------------
-#
-# 00 00 00 cb               TTL                       203 seconds
-#
-#                                                    Resolver may cache this
-#                                                    answer for 203 seconds.
-#
-# -----------------------------------------------------------------------------
-#
-# 00 04                     RDLENGTH                  4 bytes
-#
-#                                                    IPv4 address length.
-#
-# -----------------------------------------------------------------------------
-#
-# ac d9 10 8e               RDATA                     172.217.16.142
-#
-#                                                    Returned IPv4 address.
-#
-# -----------------------------------------------------------------------------
-#
-# 00 00                     OPT Name                 Root Label
-#
-# -----------------------------------------------------------------------------
-#
-# 29                         TYPE                     OPT (EDNS)
-#
-#                                                    Extension Mechanism
-#                                                    for DNS (RFC 6891).
-#
-# -----------------------------------------------------------------------------
-#
-# 10 00                     UDP Payload Size          4096 bytes
-#
-#                                                    Maximum UDP payload
-#                                                    supported by the client.
-#
-# -----------------------------------------------------------------------------
-#
-# 00 00                     Extended RCODE
-#                            EDNS Version
-#
-#                                                    Extended RCODE = 0
-#                                                    EDNS Version = 0
-#
-# -----------------------------------------------------------------------------
-#
-# 00 00                     Z Flags
-#
-#                                                    Reserved.
-#
-# -----------------------------------------------------------------------------
-#
-# 00 00                     Option Length
-#
-#                                                    No EDNS options.
-#
-# =============================================================================
-# ==========================================================
+RIPE Atlas stores the original DNS response packet in the
+result.abuf field.
 
-# =============================================================================
-# dnspython Message Object
-#
-# message = dns.message.from_wire(packet)
-#
-# After parsing the raw DNS packet, dnspython creates a
-# Message object with the following structure:
-#
-# message
-# ├── id                = 29218
-# ├── flags             = QR RD RA
-# ├── opcode            = QUERY
-# ├── rcode()           = NOERROR
-# │
-# ├── question
-# │      └── [0]
-# │             ├── name      = youtube.com.
-# │             ├── rdtype    = A
-# │             └── rdclass   = IN
-# │
-# ├── answer
-# │      └── [0]
-# │             ├── name      = youtube.com.
-# │             ├── ttl       = 203
-# │             ├── rdtype    = A
-# │             ├── rdclass   = IN
-# │             └── address   = 172.217.16.142
-# │
-# ├── authority
-# │      └── []
-# │
-# └── additional
-#        └── [0]
-#               ├── type       = OPT
-#               ├── edns       = 0
-#               └── payload    = 4096
-#
-# =============================================================================        
-# app/protocol/dns/packet_parser.py
+Parsing Flow
+------------
 
-from typing import Dict, List, Optional
+    Base64 abuf
+        -> Binary DNS packet
+        -> dnspython Message
+        -> Structured DNS Packet Model
+
+The parser returns the following logical sections:
+
+    - header
+    - question
+    - answer
+    - authority
+    - additional
+
+This module performs DNS packet parsing only.
+
+It does not know about:
+
+    - Canonical Observation
+    - Measurement metadata
+    - Probe metadata
+    - SQLite
+    - Telemetry
+    - Grafana
+
+The DNS Decoder is responsible for converting the
+structured packet model into the Canonical DNS Protocol
+object.
+
+Author
+------
+Helen Liu
+============================================================
+"""
+
 import base64
+import logging
+from typing import Any
 
+import dns.flags
 import dns.message
+import dns.opcode
 import dns.rcode
+import dns.rdataclass
 import dns.rdatatype
 
 
-def parse_dns_abuf(abuf: Optional[str]) -> Dict:
+logger = logging.getLogger(__name__)
+
+
+# ==========================================================
+# Public API
+# ==========================================================
+
+def parse_dns_abuf(
+    abuf: str | None,
+) -> dict[str, dict[str, Any]]:
     """
-    Decode RIPE Atlas DNS abuf into DNS protocol fields.
+    Parse a Base64-encoded RIPE Atlas DNS response packet.
+
+    Parameters
+    ----------
+    abuf : str | None
+        Base64-encoded DNS response packet.
+
+    Returns
+    -------
+    dict[str, dict[str, Any]]
+        Structured DNS Packet Model.
+
+    Notes
+    -----
+    Invalid or missing packet data returns an empty packet
+    model rather than raising an exception.
+
+    Parsing failures are logged for later debugging.
     """
 
-    parsed = {
-        "query_name": None,
-        "query_type": None,
-        "rcode": None,
-        "ttl": None,
-        "answer_count": 0,
-        "answers": [],
-    }
+    parsed_packet = _create_empty_packet_model()
 
     if not abuf:
-        return parsed
+        return parsed_packet
 
     try:
-        packet = base64.b64decode(abuf)
-        message = dns.message.from_wire(packet)
+        packet = base64.b64decode(
+            abuf,
+            validate=True,
+        )
 
-        parsed["rcode"] = dns.rcode.to_text(message.rcode())
+        message = dns.message.from_wire(
+            packet,
+        )
 
-        if message.question:
-            question = message.question[0]
+        parsed_packet["header"] = _parse_header(
+            message
+        )
 
-            parsed["query_name"] = str(question.name).rstrip(".")
-            parsed["query_type"] = dns.rdatatype.to_text(question.rdtype)
+        parsed_packet["question"] = _parse_question(
+            message
+        )
 
-        answers: List[str] = []
-        ttl_values: List[int] = []
+        parsed_packet["answer"] = _parse_answer(
+            message
+        )
 
-        for rrset in message.answer:
-            ttl_values.append(rrset.ttl)
+        parsed_packet["authority"] = _parse_authority(
+            message
+        )
 
-            for item in rrset:
-                if rrset.rdtype in (
-                    dns.rdatatype.A,
-                    dns.rdatatype.AAAA,
-                ):
-                    answers.append(item.address)
+        parsed_packet["additional"] = _parse_additional(
+            message
+        )
 
-        parsed["answers"] = answers
-        parsed["answer_count"] = len(answers)
+    except Exception as error:
+        logger.warning(
+            "Unable to parse DNS abuf: %s",
+            error,
+        )
 
-        if ttl_values:
-            parsed["ttl"] = ttl_values[0]
+    return parsed_packet
 
-    except Exception:
-        return parsed
 
-    return parsed
+# ==========================================================
+# Empty Packet Model
+# ==========================================================
+
+def _create_empty_packet_model(
+) -> dict[str, dict[str, Any]]:
+    """
+    Create an empty structured DNS Packet Model.
+    """
+
+    return {
+
+        "header": {
+            "transaction_id": None,
+            "flags": None,
+            "opcode": None,
+            "rcode": None,
+        },
+
+        "question": {
+            "query_name": None,
+            "query_type": None,
+            "query_class": None,
+        },
+
+        "answer": {
+            "answer_count": 0,
+            "answers": [],
+            "ttl": None,
+        },
+
+        "authority": {
+            "authority_count": 0,
+            "authority": [],
+        },
+
+        "additional": {
+            "additional_count": 0,
+            "additional": [],
+        },
+    }
+
+
+# ==========================================================
+# Header
+# ==========================================================
+
+def _parse_header(
+    message: dns.message.Message,
+) -> dict[str, Any]:
+    """
+    Parse the DNS Header section.
+    """
+
+    return {
+        "transaction_id": message.id,
+
+        "flags": dns.flags.to_text(
+            message.flags
+        ),
+
+        "opcode": dns.opcode.to_text(
+            message.opcode()
+        ),
+
+        "rcode": dns.rcode.to_text(
+            message.rcode()
+        ),
+    }
+
+
+# ==========================================================
+# Question
+# ==========================================================
+
+def _parse_question(
+    message: dns.message.Message,
+) -> dict[str, Any]:
+    """
+    Parse the first DNS Question section entry.
+
+    RIPE Atlas DNS measurements normally contain one
+    question.
+    """
+
+    question_data = {
+        "query_name": None,
+        "query_type": None,
+        "query_class": None,
+    }
+
+    if not message.question:
+        return question_data
+
+    question = message.question[0]
+
+    question_data["query_name"] = str(
+        question.name
+    ).rstrip(".")
+
+    question_data["query_type"] = dns.rdatatype.to_text(
+        question.rdtype
+    )
+
+    question_data["query_class"] = dns.rdataclass.to_text(
+        question.rdclass
+    )
+
+    return question_data
+
+
+# ==========================================================
+# Answer
+# ==========================================================
+
+def _parse_answer(
+    message: dns.message.Message,
+) -> dict[str, Any]:
+    """
+    Parse the DNS Answer section.
+
+    All record types are preserved as structured records.
+
+    A and AAAA records also include an address field.
+    """
+
+    answers: list[dict[str, Any]] = []
+    ttl_values: list[int] = []
+
+    for rrset in message.answer:
+        ttl_values.append(
+            rrset.ttl
+        )
+
+        answers.extend(
+            _parse_rrset(rrset)
+        )
+
+    return {
+        "answer_count": len(answers),
+        "answers": answers,
+
+        # The minimum TTL is retained because it represents
+        # the earliest cache-expiration boundary among the
+        # returned answer records.
+        "ttl": min(ttl_values) if ttl_values else None,
+    }
+
+
+# ==========================================================
+# Authority
+# ==========================================================
+
+def _parse_authority(
+    message: dns.message.Message,
+) -> dict[str, Any]:
+    """
+    Parse the DNS Authority section.
+    """
+
+    authority_records: list[dict[str, Any]] = []
+
+    for rrset in message.authority:
+        authority_records.extend(
+            _parse_rrset(rrset)
+        )
+
+    return {
+        "authority_count": len(authority_records),
+        "authority": authority_records,
+    }
+
+
+# ==========================================================
+# Additional
+# ==========================================================
+
+def _parse_additional(
+    message: dns.message.Message,
+) -> dict[str, Any]:
+    """
+    Parse the DNS Additional section.
+
+    dnspython represents EDNS OPT information separately
+    from normal resource records.
+
+    Normal additional records are preserved here.
+    """
+
+    additional_records: list[dict[str, Any]] = []
+
+    for rrset in message.additional:
+        additional_records.extend(
+            _parse_rrset(rrset)
+        )
+
+    return {
+        "additional_count": len(additional_records),
+        "additional": additional_records,
+    }
+
+
+# ==========================================================
+# Resource Record Set
+# ==========================================================
+
+def _parse_rrset(
+    rrset: Any,
+) -> list[dict[str, Any]]:
+    """
+    Convert one dnspython RRset into canonical dictionaries.
+    """
+
+    records: list[dict[str, Any]] = []
+
+    record_type = dns.rdatatype.to_text(
+        rrset.rdtype
+    )
+
+    record_class = dns.rdataclass.to_text(
+        rrset.rdclass
+    )
+
+    record_name = str(
+        rrset.name
+    ).rstrip(".")
+
+    for record in rrset:
+        parsed_record = {
+            "name": record_name,
+            "type": record_type,
+            "class": record_class,
+            "ttl": rrset.ttl,
+            "value": record.to_text(),
+        }
+
+        if rrset.rdtype in (
+            dns.rdatatype.A,
+            dns.rdatatype.AAAA,
+        ):
+            parsed_record["address"] = record.address
+
+        records.append(
+            parsed_record
+        )
+
+    return records

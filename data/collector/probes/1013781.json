@@ -1,0 +1,69 @@
+{
+    "address_v4": "107.174.212.213",
+    "address_v6": null,
+    "asn_v4": 36352,
+    "asn_v6": null,
+    "country_code": "US",
+    "description": null,
+    "firmware_version": 5120,
+    "first_connected": 1765929842,
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            -96.7985,
+            32.7775
+        ]
+    },
+    "id": 1013781,
+    "is_anchor": false,
+    "is_public": true,
+    "last_connected": 1783992747,
+    "prefix_v4": "107.174.212.0/24",
+    "prefix_v6": null,
+    "status": {
+        "id": 1,
+        "name": "Connected",
+        "since": "2026-06-29T02:05:23Z"
+    },
+    "status_since": 1782698723,
+    "tags": [
+        {
+            "name": "system: Resolves A Correctly",
+            "slug": "system-resolves-a-correctly"
+        },
+        {
+            "name": "system: Resolves AAAA Correctly",
+            "slug": "system-resolves-aaaa-correctly"
+        },
+        {
+            "name": "system: IPv4 Works",
+            "slug": "system-ipv4-works"
+        },
+        {
+            "name": "system: IPv4 Capable",
+            "slug": "system-ipv4-capable"
+        },
+        {
+            "name": "system: IPv4 RFC1918",
+            "slug": "system-ipv4-rfc1918"
+        },
+        {
+            "name": "system: IPv4 Stable 30d",
+            "slug": "system-ipv4-stable-30d"
+        },
+        {
+            "name": "system: IPv4 Stable 90d",
+            "slug": "system-ipv4-stable-90d"
+        },
+        {
+            "name": "system: IPv4 Stable 1d",
+            "slug": "system-ipv4-stable-1d"
+        },
+        {
+            "name": "system: Software",
+            "slug": "system-software"
+        }
+    ],
+    "total_uptime": 18049182,
+    "type": "Probe"
+}

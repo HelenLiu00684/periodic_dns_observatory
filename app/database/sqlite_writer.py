@@ -5,30 +5,49 @@ Module  : sqlite_writer.py
 
 Description
 -----------
-Writes normalized Observation data into the SQLite archive
-database.
+Provides archive persistence for the DNS Measurement Platform.
 
-This module is responsible ONLY for INSERT operations.
+This module stores canonical platform data into the SQLite
+Archive Database.
+
+The Writer Layer is responsible ONLY for persisting data.
+
+It assumes all incoming objects have already been collected,
+validated, and normalized by higher platform layers.
 
 Responsibilities
 ----------------
-✓ Insert Measurement
+✓ Insert Measurement records
 
-✓ Insert Probe
+✓ Insert Probe records
 
-✓ Insert Observation
+✓ Insert Observation records
 
-✓ Prevent duplicate records
+✓ Prevent duplicate Observation records
+
+✓ Commit archive transactions
 
 This module DOES NOT
+--------------------
+✗ Create database connections
 
-✗ Parse DNS packets
+✗ Create database tables
 
-✗ Normalize observations
+✗ Parse RIPE Atlas responses
+
+✗ Normalize Observation objects
+
+✗ Generate telemetry metrics
 
 ✗ Perform analytics
 
-✗ Generate telemetry
+Design Principle
+----------------
+Persistence is intentionally separated from collection,
+normalization, telemetry generation, and visualization.
+
+The Writer Layer stores canonical platform objects exactly as
+they are received.
 
 Author
 ------
@@ -36,25 +55,45 @@ Helen Liu
 ============================================================
 """
 
+# ==========================================================
+# Imports
+# ==========================================================
+
 import json
 from sqlite3 import Connection
 
 from app.database.sqlite_connection import (
-    get_connection,
     close_connection,
+    get_connection,
 )
 
 
 # ==========================================================
 # Measurement
-# Field Mapping
 #
-# RIPE Atlas JSON          SQLite Column
-# --------------------------------------
-# id                    -> measurement_id
-# type                  -> protocol
-# interval              -> interval_seconds
-# af                    -> address_family
+# Purpose
+# ----------------------------------------------------------
+# Store RIPE Atlas Measurement metadata.
+#
+# One Measurement may generate Observation records from many
+# different probes over time.
+#
+# Measurement therefore has an independent lifecycle and is
+# stored separately from Observation records.
+#
+#
+# RIPE Atlas JSON            SQLite Archive
+# ----------------------------------------------------------
+# id                     -> measurement_id
+#
+# type                   -> protocol
+#
+# interval               -> interval_seconds
+#
+# af                     -> address_family
+#
+# The complete original Measurement object is preserved in
+# raw_json.
 # ==========================================================
 
 def insert_measurement(
@@ -62,7 +101,24 @@ def insert_measurement(
     measurement: dict,
 ) -> None:
     """
-    Insert a Measurement record.
+    Insert one Measurement record.
+
+    Parameters
+    ----------
+    connection
+        SQLite archive connection.
+
+    measurement
+        Canonical Measurement dictionary.
+
+    Notes
+    -----
+    Measurement originates from an external system.
+
+    Missing fields are therefore accepted as None using
+    dict.get() instead of direct dictionary indexing.
+
+    This prevents KeyError when optional fields are absent.
     """
 
     cursor = connection.cursor()
@@ -93,6 +149,60 @@ def insert_measurement(
             measurement.get("af"),
             measurement.get("start_time"),
             measurement.get("stop_time"),
+
+            # ==================================================
+            # Engineering Note
+            #
+            # SQLite stores only primitive values such as
+            # INTEGER, REAL, TEXT, BLOB, and NULL.
+            #
+            # Python dictionaries cannot be written directly
+            # into SQLite.
+            #
+            # The Writer Layer therefore serializes the
+            # Measurement dictionary into a JSON string before
+            # persistence.
+            #
+            # Data Transformation
+            # -------------------
+            #
+            # Python Dictionary
+            #
+            #     measurement
+            #
+            #            │
+            #            ▼
+            #
+            # json.dumps(measurement):  dumps = Serialize to JSON String
+            #
+            #            │
+            #            ▼
+            #
+            # JSON String (TEXT)
+            #
+            #            │
+            #            ▼
+            #
+            # SQLite Archive
+            #
+            # During archive retrieval the Reader Layer performs
+            # the reverse transformation:
+            #
+            #     json.loads(raw_json):  loads = Deserialize JSON String → Python Object
+            #
+            #            │
+            #            ▼
+            #
+            # Python Dictionary
+            #
+            # Higher platform layers therefore always work with
+            # standard Python dictionaries rather than JSON
+            # strings.
+            #
+            # Serialization is considered part of persistence,
+            # not business logic.
+            # ==================================================
+
             json.dumps(measurement),
         ),
     )
@@ -100,6 +210,17 @@ def insert_measurement(
 
 # ==========================================================
 # Probe
+#
+# Purpose
+# ----------------------------------------------------------
+# Store RIPE Atlas Probe metadata.
+#
+# One Probe may participate in many Observation records.
+#
+# Probe information is therefore normalized into its own
+# archive table to avoid duplication.
+#
+# The complete original Probe object is preserved in raw_json.
 # ==========================================================
 
 def insert_probe(
@@ -107,7 +228,23 @@ def insert_probe(
     probe: dict,
 ) -> None:
     """
-    Insert a Probe record.
+    Insert one Probe record.
+
+    Parameters
+    ----------
+    connection
+        SQLite archive connection.
+
+    probe
+        Canonical Probe dictionary.
+
+    Notes
+    -----
+    Probe information originates from external systems.
+
+    Optional fields are accepted using dict.get().
+
+    Missing values are stored as NULL inside SQLite.
     """
 
     cursor = connection.cursor()
@@ -148,12 +285,40 @@ def insert_probe(
             probe.get("prefix_v6"),
             probe.get("first_connected"),
             probe.get("status_name"),
+
+            # Engineering Note
+            #
+            # Preserve the complete Probe object exactly as it
+            # was received from the Collector Layer.
+            #
+            # Individual database columns support efficient
+            # filtering and indexing, while raw_json preserves
+            # the complete source object for debugging, future
+            # schema evolution, and archive replay.
             json.dumps(probe),
         ),
     )
-
 # ==========================================================
 # Observation
+#
+# Purpose
+# ----------------------------------------------------------
+# Store one complete canonical Observation record.
+#
+# Observation is the core archive entity of the DNS
+# Measurement Platform.
+#
+# Unlike Measurement and Probe metadata, every Observation
+# represents one point-in-time network measurement.
+#
+# Observation objects are assumed to be fully normalized
+# before entering the Writer Layer.
+#
+# Therefore, required fields are accessed directly using
+# dictionary indexing instead of dict.get().
+#
+# Missing required fields should raise KeyError because they
+# indicate an invalid canonical Observation.
 # ==========================================================
 
 def insert_observation(
@@ -162,6 +327,23 @@ def insert_observation(
 ) -> None:
     """
     Insert one Observation record.
+
+    Parameters
+    ----------
+    connection
+        SQLite archive connection.
+
+    observation
+        Canonical Observation dictionary.
+
+    Notes
+    -----
+    Observation is already normalized.
+
+    Required fields are accessed directly.
+
+    Nested Observation sections are serialized into JSON
+    before being stored inside SQLite.
     """
 
     cursor = connection.cursor()
@@ -199,6 +381,34 @@ def insert_observation(
             observation["metadata"]["stored_timestamp"],
             observation["metadata"]["observation_type"],
 
+            # ==================================================
+            # Engineering Note
+            #
+            # Observation contains multiple nested dictionaries.
+            #
+            # SQLite cannot store nested Python objects directly.
+            #
+            # Each logical Observation section is therefore
+            # serialized independently.
+            #
+            # This preserves the original platform structure
+            # while allowing future Reader implementations to
+            # deserialize only the sections they require.
+            #
+            # Reader
+            #
+            #     json.loads(identity)
+            #
+            #     json.loads(network)
+            #
+            #     json.loads(routing)
+            #
+            # rather than reconstructing one large JSON object.
+            #
+            # This design keeps archive persistence independent
+            # from higher platform layers.
+            # ==================================================
+
             json.dumps(observation["identity"]),
             json.dumps(observation["metadata"]),
             json.dumps(observation["network"]),
@@ -211,8 +421,9 @@ def insert_observation(
         ),
     )
 
+
 # ==========================================================
-# Helper fetch the first one
+# Archive Validation
 # ==========================================================
 
 def observation_exists(
@@ -220,7 +431,31 @@ def observation_exists(
     observation_id: str,
 ) -> bool:
     """
-    Check whether an Observation already exists.
+    Determine whether an Observation already exists.
+
+    Parameters
+    ----------
+    connection
+        SQLite archive connection.
+
+    observation_id
+        Observation identifier.
+
+    Returns
+    -------
+    bool
+
+        True
+            Observation already exists.
+
+        False
+            Observation does not exist.
+
+    Notes
+    -----
+    Observation is the only archive entity checked for
+    duplication because every Observation represents one
+    immutable measurement event.
     """
 
     cursor = connection.cursor()
@@ -238,11 +473,7 @@ def observation_exists(
 
 
 # ==========================================================
-# High-Level API
-# ==========================================================
-
-# ==========================================================
-# High-Level API
+# Archive Workflow
 # ==========================================================
 
 def save_all(
@@ -252,15 +483,46 @@ def save_all(
     observation: dict,
 ) -> bool:
     """
-    Save a complete Observation workflow into SQLite.
+    Persist one complete Observation workflow.
+
+    Archive Workflow
+    ----------------
+
+        Measurement
+
+              │
+
+              ▼
+
+           Probe
+
+              │
+
+              ▼
+
+        Observation
+
+              │
+
+              ▼
+
+          Commit
+
+    Measurement and Probe metadata are updated whenever they
+    are received.
+
+    Observation records are inserted only if they do not
+    already exist.
 
     Returns
     -------
     True
-        A new Observation was inserted.
+
+        A new Observation was archived.
 
     False
-        Observation already exists.
+
+        Observation already existed.
     """
 
     insert_measurement(
@@ -292,10 +554,12 @@ def save_all(
     connection.commit()
 
     return True
+
+
 # ==========================================================
-# Main
+# Standalone Verification
 # ==========================================================
 
 if __name__ == "__main__":
 
-    print("SQLite Writer Module")
+    print("SQLite Writer Module")    
